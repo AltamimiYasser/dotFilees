@@ -1,0 +1,44 @@
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 844,
+       "width": 1364,
+       "x": 0,
+       "y": 0
+    },
+    "name": "ranger",
+    "percent": 0.184615384615385,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^ranger$",
+        "title": "^ranger$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 844,
+       "width": 1364,
+       "x": 0,
+       "y": 0
+    },
+    "name": "yasser:~",
+    "percent": 0.815384615384615,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^files$",
+        "title": "^yasser\\:\\~$"
+       }
+    ],
+    "type": "con"
+}
+

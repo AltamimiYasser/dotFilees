@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/yasser'
+let g:netrw_dirhist_6='/home/yasser/.yarn'
+let g:netrw_dirhist_5='/home/yasser'
+let g:netrw_dirhist_4='/home/yasser/.atom'
+let g:netrw_dirhist_3='/home/yasser'
+let g:netrw_dirhist_2='/home/yasser/.atom'
+let g:netrw_dirhist_1='/home/yasser'

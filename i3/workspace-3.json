@@ -1,0 +1,44 @@
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 844,
+       "width": 1364,
+       "x": 0,
+       "y": 0
+    },
+    "name": "yasser:~",
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^coding$",
+        "title": "^yasser\\:\\~$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 844,
+       "width": 1364,
+       "x": 0,
+       "y": 0
+    },
+    "name": "yasser:~",
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^coding$",
+        "title": "^yasser\\:\\~$"
+       }
+    ],
+    "type": "con"
+}
+

@@ -1,0 +1,102 @@
+!! Color Scheme
+
+bg-color: 	         #2f343f
+inactive-bg-color:   #2f343f
+text-color:          #f3f4f5
+inactive-text-color: #676E7D
+urgent-bg-color:     #E53935
+
+!! Imported
+!! Colorscheme
+
+! special
+*.foreground: #93a1a1
+*.background: #141c21
+*.cursorColor: #afbfbf
+
+! black
+*.color0: #263640
+*.color8: #4a697d
+
+! red
+*.color1: #d12f2c
+*.color9: #fa3935
+
+! green
+*.color2: #819400
+*.color10: #a4bd00
+
+! yellow
+*.color3: #b08500
+*.color11: #d9a400
+
+! blue
+*.color4: #2587cc
+*.color12: #2ca2f5
+
+! magenta
+*.color5: #696ebf
+*.color13: #8086e8
+
+! cyan
+*.color6: #289c93
+*.color14: #33c5ba
+
+! white
+*.color7: #bfbaac
+*.color15: #fdf6e3
+
+! for high dpi
+Xft.dpi: 192
+
+
+! Urxvt Settings
+URxvt.scrollBar: False
+URxvt.scrollstyle: rxvt
+Urxvt.xursorBlink: true
+URxvt.underlineURLs: True
+URxvt.font: xft:source code pro:medium:size=10
+URxvt.boldFont: xft:source code pro:Bold:size=10
+URxvt.italicFont: xft:source code pro:Italic:size=10
+Urxvt.boldItalicFont: xft:source code pro:Bold Italic:size=10
+URxvt.searchable-scrollback: true
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+Urxvt.intrnalBorder: 24
+Urxvt.scrollBar_right: false
+Urxvt.urgentOnBell: true
+Urxvt.depth: 24
+Urxvt.iso14755: fale
+
+! Colors
+URxvt.bg: #2f343f
+
+! keybindings
+!! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+
+! resize font keybindings
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-equal:      resize-font:bigger
+URxvt.keysym.C-0:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
+
+! extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize-font
+
+!! Copy Paste & Other Extensions
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.urlLauncher: firefox
+URxvt.urlButton: 1

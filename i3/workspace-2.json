@@ -1,0 +1,74 @@
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 844,
+       "width": 1364,
+       "x": 0,
+       "y": 0
+    },
+    "name": "yasser:~",
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^big\\-w2$",
+        "title": "^yasser\\:\\~$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 844,
+               "width": 1364,
+               "x": 0,
+               "y": 0
+            },
+            "name": "yasser:~",
+            "percent": 0.285714285714286,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "instance": "^search\\-small$",
+                "title": "^yasser\\:\\~$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 2112,
+               "width": 3228,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Google - Mozilla Firefox",
+            "percent": 0.714285714285714,
+            "swallows": [
+               {
+                "class": "^firefox$",
+                "instance": "^Navigator$",
+                "window_role": "^browser$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

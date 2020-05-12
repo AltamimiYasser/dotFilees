@@ -1,0 +1,56 @@
+// vim:ts=4:sw=4:et
+{
+    // splith split container with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": 0.75,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 699,
+               "width": 1611,
+               "x": 0,
+               "y": 0
+            },
+            "name": "yasser - File Manager",
+            "percent": 1,
+            "swallows": [
+               {
+               // "class": "^Thunar$",
+               // "instance": "^Thunar$",
+               // "title": "^yasser\\ \\-\\ File\\ Manager$",
+               // "window_role": "^Thunar\\-1589150375\\-253108156$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 844,
+       "width": 1364,
+       "x": 0,
+       "y": 0
+    },
+    "name": "yasser:~",
+    "percent": 0.25,
+    "swallows": [
+       {
+       // "class": "^URxvt$",
+       // "instance": "^thunar$",
+       // "title": "^yasser\\:\\~$"
+       }
+    ],
+    "type": "con"
+}
+
