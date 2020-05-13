@@ -9,6 +9,24 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+#################################### Setters #################################
+
+set $refresh_i3status killall -SIGUSR1 i3status
+
+# workspaces
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+##############################################################################
+
 
 #
 ################################### Look ######################################
@@ -66,6 +84,10 @@ bindsym Mod1+1 [instance="scratchterm"] scratchpad show
 # todoist
 bindsym Mod1+t exec todoist &
 bindsym Mod1+2 [class="Todoist"] scratchpad show
+
+# typora
+bindsym Mod1+n exec urxvt -name notes -e bash  -i -c "vim"
+bindsym Mod1+3 [instance="notes"] scratchpad show
 
 # rofi
 bindsym $mod+d exec rofi -show drun
@@ -197,11 +219,11 @@ exec --no-startup-id "i3-msg 'workspace 2: ; append_layout /home/yasser/.conf
 ## open work space 3 with a 2 terminals
 exec --no-startup-id " sleep 1; i3-msg 'workspace 3: ; append_layout /home/yasser/.config/i3/workspace-3.json; exec urxvt -name coding ; exec urxvt -name coding '"
 #
-## open workspace 4 with ranger and a terminal
-exec --no-startup-id "sleep 2; i3-msg 'workspace 4: ; append_layout /home/yasser/.config/i3/workspace-4.json; exec urxvt -name ranger -e ranger; exec urxvt -name files '"
-#
+## open workspace 4 with vim so we can change it to ranger
+exec --no-startup-id i3-msg "workspace $ws4; append_layout /home/yasser/.config/i3/workspace-4.json; exec urxvt -name ranger -e bash -i -c 'ranger'"
+
 ## open workspace 5 with thunar and a terminal
-exec --no-startup-id "sleep 4; i3-msg 'workspace 5:  ; append_layout /home/yasser/.config/i3/workspace-5.json; exec urxvt -name nautilus ; exec nautilus'"
+exec --no-startup-id "sleep 4; i3-msg 'workspace 5: ; append_layout /home/yasser/.config/i3/workspace-5.json; exec urxvt -name nautilus ; exec nautilus'"
 ##
 ## firefox google.com command
 ## and finally open work space 1 with youtube and stay there
@@ -210,23 +232,6 @@ exec --no-startup-id "sleep 7; i3-msg 'workspace 1: ; append_layout /home/yas
 
 ##############################################################################
 
-#################################### Setters #################################
-
-set $refresh_i3status killall -SIGUSR1 i3status
-
-# workspaces
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-##############################################################################
 
 #################################### Scratchpads ##############################
 
@@ -240,6 +245,11 @@ for_window [instance="scratchterm"] border pixel 5
 for_window [class="Todoist"] floating enable
 for_window [class="Todoist"] move scratchpad
 
+# notes using vim
+for_window [instance="notes"] floating enable
+for_window [instance="notes"] resize 1600 1600
+for_window [instance="notes"] border pixel 5
+for_window [instance="notes"] move scratchpad
 ##############################################################################
 
 ##################################### Bar ####################################

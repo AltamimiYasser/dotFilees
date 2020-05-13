@@ -328,6 +328,14 @@ vim()
    stty "$STTYOPTS"
 }
 
+ranger()
+{
+   local STTYOPTS="$(stty --save)"
+   stty stop '' -ixoff
+   command ranger "$@"
+   stty "$STTYOPTS"
+}
+
 # use sudovim to write in sudoedit
 sudovim()
 {
@@ -371,3 +379,5 @@ sudocode(){
 # pywal
  #setsid wal -i ~/Dropbox/MyDropbox/wallpapers
 # setsid wal -r
+
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi

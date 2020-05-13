@@ -27,7 +27,7 @@ set belloff=all " disable bell for vim and gvim
 set wildmode=longest,list,full
 set wildmenu
 set ruler " show curser position all the time
-
+set whichwrap+=<,>,[,]
 
 highlight ColorColumn ctermbg=0 guibg=lightgray
 
@@ -122,6 +122,18 @@ map <leader>vimrc :vsp new <CR>:edit $MYVIMRC<CR>
 " zz to put screen in the middle while in insert mode
 imap zz <C-o>zz
 
+" map j and k to go up logical lines
+noremap <Up> gk
+noremap k gk
+noremap! <Up> <C-O>gk
+noremap! k <C-O>gk
+noremap <Down> gj
+noremap j gj
+noremap! <Down> <C-O>gj
+noremap! j <C-O>gj
+
+
+
 " autoload .vimrc when saved
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
@@ -133,3 +145,23 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 " allow .rsia syntax highlighting
 au BufNewFile,BufRead /*.rasi setf css
+
+
+" intgrate ranger to vim with leader+x
+function RangerExplorer()
+    exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
+    if filereadable('/tmp/vim_ranger_current_file')
+        exec 'edit ' . system('cat /tmp/vim_ranger_current_file')
+        call system('rm /tmp/vim_ranger_current_file')
+    endif
+    redraw!
+endfun
+map <Leader>x :call RangerExplorer()<CR>
+
+
+" for starting with note
+nnoremap <leader>n :call NewEntry()<cr>
+function! NewEntry()
+  let title = expand('~/notes/') . strftime('%F') . '-' . input("Title: ")
+  execute 'edit ' . title
+endfunction
