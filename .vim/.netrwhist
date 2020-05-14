@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/yasser'
+let g:netrw_dirhist_5='/home/yasser/dotFiles/i3'
 let g:netrw_dirhist_4='/home/yasser/.config/gtk-3.0'
 let g:netrw_dirhist_3='/home/yasser/.config/i3'
 let g:netrw_dirhist_2='/usr/local/bin'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_0='/home/yasser/Dropbox/MyDropbox/linux-config-files'
 let g:netrw_dirhist_9='/home/yasser/Dropbox/MyDropbox'
 let g:netrw_dirhist_8='/home/yasser/Dropbox'
 let g:netrw_dirhist_7='/home/yasser'
-let g:netrw_dirhist_6='/home'
-let g:netrw_dirhist_5='/'

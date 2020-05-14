@@ -44,6 +44,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yuttie/comfortable-motion.vim'
 
+
 " check plug and install neccery pluging
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -68,40 +69,48 @@ let g:airline_theme='gruvbox' " enable airline theme
 let mapleader = " " 
 
 " use "ii" to be used instead of escap twice
-imap ii <Esc><Esc>
-vmap ii <Esc><Esc>
+inoremap ii <Esc><Esc>
+vnoremap ii <Esc><Esc>
 
 " ctrl+n to open a new window and split the screen verticaly and wait for file
 " name
-nmap <C-n> :vsp new <CR>:edit 
-imap <C-n> iinv 
+nnoremap <C-n> :vsp new <CR>:edit 
+inoremap <C-n> <Esc><Esc>:vsp new <CR>:edit
 
 " use ctrl+n then h to split the window horizontally and wait for file name
-nmap <C-n>h :sp new <CR>:edit 
-imap <C-n>h iinh
+nnoremap <C-n>h :sp new <CR>:edit 
+inoremap <C-n>h <Esc><Esc>:sp h<CR>:edit
 
 " copy and paste
 vnoremap <C-c> "+y
-map <C-p> "+p
-imap <C-p> ii"+pi
+noremap <C-p> "+p
+inoremap <C-p> <Esc><Esc>"+pi
 
 " undo and redo
-imap <C-z> <C-o>u
-nmap <C-z> u
-imap <C-r> <C-o><C-r>
+inoremap <C-z> <C-o>u
+nnoremap <C-z> u
+inoremap <C-r> <C-o><C-r>
 
 " save file with ctrl+s
-nmap <C-s> :update<CR>
-imap <C-s> ii:update<CR>
+noremap <C-s> :update<CR>
+inoremap <C-s> <Esc><Esc>:update<CR>
 
 " ctrl+t open a new tab
-nmap <C-t> :tabnew<CR>
+nnoremap <C-t> :tabnew<CR>
 
 " to move between tabs ctrl+arrow (left and right)
-nmap <C-Right> :tabnext<CR>
-imap <C-Right> ii:tabnext<CR>
-nmap <C-Left> :tabprev<CR>
-imap <C-Left> ii:tabprev<CR>
+" ctrl+Right
+set <F14>=Oc
+
+"ctrl+Left
+set <F15>=Od
+
+" and now map them
+nnoremap <F14> :tabnext<CR>
+inoremap <F14> <Esc><Esc>:tabnext<CR>
+nnoremap <F15> :tabprev<CR>
+inoremap <F15> <Esc><Esc>:tabprev
+
 
 " use leader plus hjkl to move between open windows
 nnoremap <leader>h :wincmd h<CR>
@@ -113,24 +122,25 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>b :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
 " formating with F7
-map <F7> gg=G<C-o><C-o>
-imap <F7> iigg=G<C-o><C-o>
+nnoremap <F7> gg=G<C-o><C-o>
+inoremap <F7> <Esc><Esc>gg=G<C-o><C-o>i
 
 " leader+vimrc open vimrc file from anyfile
 map <leader>vimrc :vsp new <CR>:edit $MYVIMRC<CR>
 
 " zz to put screen in the middle while in insert mode
-imap zz <C-o>zz
+inoremap zz <C-o>zz
 
+" TODO: map arrows and up and down to move logical lines
 " map j and k to go up logical lines
-noremap <Up> gk
-noremap k gk
-noremap! <Up> <C-O>gk
-noremap! k <C-O>gk
-noremap <Down> gj
-noremap j gj
-noremap! <Down> <C-O>gj
-noremap! j <C-O>gj
+" nmap <Up> gk
+" nmap k gk
+" nmap <Up> <C-O>gk
+" nmap k <C-O>gk
+" nmap <Down> gj
+" nmap j gj
+" nmap <Down> <C-O>gj
+" nmap j <C-O>gj
 
 
 
@@ -159,9 +169,35 @@ endfun
 map <Leader>x :call RangerExplorer()<CR>
 
 
-" for starting with note
+" leader + n for new note
 nnoremap <leader>n :call NewEntry()<cr>
 function! NewEntry()
-  let title = expand('~/notes/') . strftime('%F') . '-' . input("Title: ")
-  execute 'edit ' . title
+    let title = expand('~/notes/') . strftime('%F') . '-' . input("Title: ")
+    execute 'edit ' . title
 endfunction
+
+
+" save in the note directory with the date and time of the note using
+" ctrl+alt+s
+function! SaveWithTS(filename) range
+    let l:extension = '.' . fnamemodify( a:filename, ':e' )
+    if len(l:extension) == 1
+        let l:extension = '.txt'
+    endif
+
+    let l:filename = escape ( fnamemodify(a:filename, ':r') . strftime(" - %Y-%m-%d_%H-%M") . l:extension, ' ' )
+
+    execute "write /home/yasser/notes/" . l:filename
+endfunction
+
+command! -nargs=1 SWT call SaveWithTS( <q-args> )
+
+" and now give it a shortcut ctrl+alt+s
+set <F13>=
+nnoremap <F13> :SWT 
+inoremap <F13> <C-o>:SWT 
+vnoremap <F13> <Esc><Esc>:SWT 
+
+
+
+

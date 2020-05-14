@@ -381,3 +381,5 @@ sudocode(){
 # setsid wal -r
 
 if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
+TERM=rxvt

@@ -85,8 +85,10 @@ bindsym Mod1+1 [instance="scratchterm"] scratchpad show
 bindsym Mod1+t exec todoist &
 bindsym Mod1+2 [class="Todoist"] scratchpad show
 
-# typora
-bindsym Mod1+n exec urxvt -name notes -e bash  -i -c "vim"
+# vim notes
+#vim -c "file /home/yasser/notes/$(date)"
+#bindsym Mod1+n exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/$(date)'"
+bindsym Mod1+n exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/note'"
 bindsym Mod1+3 [instance="notes"] scratchpad show
 
 # rofi
@@ -230,6 +232,10 @@ exec --no-startup-id "sleep 4; i3-msg 'workspace 5: ; append_layout /home/yas
 set $google "/usr/bin/firefox --new-window http://www.google.com/"
 exec --no-startup-id "sleep 7; i3-msg 'workspace 1: ; append_layout /home/yasser/.config/i3/workspace-1.json; exec firefox --new-window https://www.youtube.com/'"
 
+# start scratchpad apps
+exec --no-startup-id exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/note'" 
+exec --no-startup-id todoist &
+exec --no-startup-id urxvt -name scratchterm &
 ##############################################################################
 
 
