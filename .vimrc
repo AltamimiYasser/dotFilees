@@ -21,13 +21,17 @@ set wrap
 set autowrite
 set linebreak
 set backupext=.bak 
-set patchmode=.orig " take a copy of the original file 
 set mouse=a " enable mouse
 set belloff=all " disable bell for vim and gvim
 set wildmode=longest,list,full
 set wildmenu
 set ruler " show curser position all the time
 set whichwrap+=<,>,[,]
+
+" this for vimwiki
+set nocompatible
+filetype plugin on
+syntax on
 
 highlight ColorColumn ctermbg=0 guibg=lightgray
 
@@ -43,7 +47,9 @@ Plug 'tmsvg/pear-tree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yuttie/comfortable-motion.vim'
-
+Plug 'vimwiki/vimwiki'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " check plug and install neccery pluging
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -198,6 +204,6 @@ nnoremap <F13> :SWT
 inoremap <F13> <C-o>:SWT 
 vnoremap <F13> <Esc><Esc>:SWT 
 
-
-
-
+" enabling mark down for vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]

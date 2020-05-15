@@ -9,6 +9,18 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
+#################################### Power Button ############################
+
+set $mode_power [l]ogoff | [s]hutdown
+mode "$mode_power" {
+        bindsym l exec i3-msg exit
+        bindsym s exec systemctl poweroff
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym --release XF86PowerOff mode "$mode_power"
+
 #################################### Setters #################################
 
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -86,9 +98,8 @@ bindsym Mod1+t exec todoist &
 bindsym Mod1+2 [class="Todoist"] scratchpad show
 
 # vim notes
-#vim -c "file /home/yasser/notes/$(date)"
-#bindsym Mod1+n exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/$(date)'"
-bindsym Mod1+n exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/note'"
+#bindsym Mod1+n exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/note'"
+bindsym Mod1+n exec urxvt -name notes -e bash -i -c "vim /home/yasser/vimwiki/index.md"
 bindsym Mod1+3 [instance="notes"] scratchpad show
 
 # rofi
@@ -197,8 +208,9 @@ bindsym $mod+b exec firefox
 ##############################################################################
 
 ################################### Startup Applications #####################
+exec --no-startup-id xss-lock --transfer-sleep-lock -- lock-screen.sh --nofork
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # notification dunst
@@ -233,7 +245,8 @@ set $google "/usr/bin/firefox --new-window http://www.google.com/"
 exec --no-startup-id "sleep 7; i3-msg 'workspace 1: ; append_layout /home/yasser/.config/i3/workspace-1.json; exec firefox --new-window https://www.youtube.com/'"
 
 # start scratchpad apps
-exec --no-startup-id exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/note'" 
+#exec --no-startup-id exec urxvt -name notes -e bash -i -c "vim -c 'file /home/yasser/notes/note'" 
+exec --no-startup-id exec urxvt -name notes -e bash -i -c "vim /home/yasser/vimwiki/index.md"
 exec --no-startup-id todoist &
 exec --no-startup-id urxvt -name scratchterm &
 ##############################################################################
@@ -253,7 +266,7 @@ for_window [class="Todoist"] move scratchpad
 
 # notes using vim
 for_window [instance="notes"] floating enable
-for_window [instance="notes"] resize 1600 1600
+for_window [instance="notes"] resize 1600 1600 # TODO
 for_window [instance="notes"] border pixel 5
 for_window [instance="notes"] move scratchpad
 ##############################################################################
@@ -262,7 +275,8 @@ for_window [instance="notes"] move scratchpad
 
 bar {
 
-    status_command i3blocks -c ~/.config/i3blocks/config
+    status_command i3blocks -c /home/yasser/.config/i3blocks/config
+
         colors {
             background $bg-color
                 separator #757575
@@ -273,5 +287,6 @@ bar {
                 urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
     position top
+   # height 18
 }
 

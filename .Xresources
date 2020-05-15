@@ -51,10 +51,10 @@ URxvt.scrollBar: False
 URxvt.scrollstyle: rxvt
 Urxvt.xursorBlink: true
 URxvt.underlineURLs: True
-URxvt.font: xft:source code pro:medium:size=10
-URxvt.boldFont: xft:source code pro:Bold:size=10
-URxvt.italicFont: xft:source code pro:Italic:size=10
-Urxvt.boldItalicFont: xft:source code pro:Bold Italic:size=10
+URxvt.font: xft:source code pro:medium:size=12
+URxvt.boldFont: xft:source code pro:Bold:size=12
+URxvt.italicFont: xft:source code pro:Italic:size=12
+Urxvt.boldItalicFont: xft:source code pro:Bold Italic:size=12
 URxvt.searchable-scrollback: true
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
