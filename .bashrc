@@ -382,4 +382,7 @@ sudocode(){
 
 if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
-TERM=rxvt
+alias v="vim"
+alias sv="sudovim"
+alias calc="expr"
+alias ls="ls -la"

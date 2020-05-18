@@ -13,8 +13,7 @@
     "swallows": [
        {
         "class": "^URxvt$",
-        "instance": "^coding$",
-        "title": "^yasser\\:\\~$"
+        "instance": "^coding$"
        }
     ],
     "type": "con"
@@ -35,8 +34,7 @@
     "swallows": [
        {
         "class": "^URxvt$",
-        "instance": "^coding$",
-        "title": "^yasser\\:\\~$"
+        "instance": "^coding$"
        }
     ],
     "type": "con"

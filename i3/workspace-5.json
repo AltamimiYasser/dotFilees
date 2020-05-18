@@ -33,8 +33,7 @@
             "swallows": [
                 {
                     "class": "^URxvt$",
-                    "instance": "^nautilus$",
-                    "title": "^yasser\\:\\~$"
+                    "instance": "^nautilus$"
                 }
             ],
             "type": "con"

@@ -50,6 +50,7 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'ap/vim-css-color'
 
 " check plug and install neccery pluging
 if empty(glob('~/.vim/autoload/plug.vim'))

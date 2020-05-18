@@ -13,8 +13,7 @@
     "swallows": [
        {
         "class": "^URxvt$",
-        "instance": "^ranger$",
-        "title": "^bash$"
+        "instance": "^ranger$"
        }
     ],
     "type": "con"
