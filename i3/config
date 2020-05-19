@@ -23,6 +23,7 @@ mode "$mode_power" {
         bindsym Escape mode "default"
 }
 bindsym --release XF86PowerOff mode "$mode_power"
+bindsym --release Ctrl+Mod1+Delete mode "$mode_power"
 
 #################################### Setters #################################
 
@@ -87,7 +88,7 @@ bindsym XF86MonBrightnessDown exec brightnessControl.sh down
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -97,11 +98,11 @@ bindsym Mod1+comma exec polybar-msg cmd hide
 bindsym Mod1+period exec polybar-msg cmd show
 
 # dropdown terminal
-bindsym Mod1+grave exec urxvt -name scratchterm &
+bindsym Mod1+grave exec alacritty --class scratchterm &
 bindsym Mod1+1 [instance="scratchterm"] scratchpad show
 
 # dropdown terminal python
-bindsym Mod1+p exec urxvt -name py -e python&
+bindsym Mod1+p exec alacritty --class py -e python&
 bindsym Mod1+4 [instance="py"] scratchpad show
 
 # todoist
@@ -109,7 +110,7 @@ bindsym Mod1+t exec todoist &
 bindsym Mod1+2 [class="Todoist"] scratchpad show
 
 # vimwiki
-bindsym Mod1+n exec urxvt -name notes -e zsh -i -c "vim /home/yasser/vimwiki/index.md"
+bindsym Mod1+n exec alacritty --class notes -e bash -i -c "vim /home/yasser/vimwiki/index.md"
 bindsym Mod1+3 [instance="notes"] scratchpad show
 
 # rofi
@@ -240,16 +241,16 @@ exec dropbox start
 
 # open work space 2 with firefox and two terminals
 set $arch-wiki "firefox --new-window https://wiki.archlinux.org"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/yasser/.config/i3/workspace-2.json; exec firefox --new-window http://www.google.com; exec urxvt -name search-small ; exec urxvt -name big-w2 '"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/yasser/.config/i3/workspace-2.json; exec firefox --new-window http://www.google.com; exec alacritty --class search-small ; exec alacritty --class big-w2 '"
 ##
 ## open work space 3 with a 2 terminals
-exec --no-startup-id " sleep 1; i3-msg 'workspace 3; append_layout /home/yasser/.config/i3/workspace-3.json; exec urxvt -name coding ; exec urxvt -name coding '"
+exec --no-startup-id " sleep 1; i3-msg 'workspace 3; append_layout /home/yasser/.config/i3/workspace-3.json; exec alacritty --class coding'"
 #
 ## open workspace 4 with vim so we can change it to ranger
-exec --no-startup-id i3-msg "workspace $ws4; append_layout /home/yasser/.config/i3/workspace-4.json; exec urxvt -name ranger -e zsh -i -c 'ranger'"
+exec --no-startup-id i3-msg "workspace $ws4; append_layout /home/yasser/.config/i3/workspace-4.json; exec alacritty --class ranger -e bash -i -c 'ranger'"
 
 ## open workspace 5 with thunar and a terminal
-exec --no-startup-id "sleep 4; i3-msg 'workspace 5; append_layout /home/yasser/.config/i3/workspace-5.json; exec urxvt -name nautilus ; exec nautilus'"
+exec --no-startup-id "sleep 4; i3-msg 'workspace 5; append_layout /home/yasser/.config/i3/workspace-5.json; exec alacritty --class nautilus ; exec nautilus'"
 ##
 ## firefox google.com command
 ## and finally open work space 1 with youtube and stay there
@@ -257,10 +258,10 @@ set $google "/usr/bin/firefox --new-window http://www.google.com/"
 exec --no-startup-id "sleep 7; i3-msg 'workspace 1; append_layout /home/yasser/.config/i3/workspace-1.json; exec firefox --new-window https://www.youtube.com/'"
 
 # start scratchpad apps
-exec --no-startup-id exec urxvt -name notes -e zsh -i -c "vim /home/yasser/vimwiki/index.md"
+exec --no-startup-id exec alacritty --class notes -e bash -i -c "vim /home/yasser/vimwiki/index.md"
 exec --no-startup-id todoist &
-exec --no-startup-id urxvt -name scratchterm &
-exec --no-startup-id urxvt -name py -e python&
+exec --no-startup-id alacritty --class scratchterm &
+exec --no-startup-id alacritty --class py -e python&
 ##############################################################################
 
 
@@ -277,7 +278,7 @@ for_window [instance="scratchterm"] move scratchpad
 for_window [instance="py"] floating enable
 for_window [instance="py"] move scratchpad 
 for_window [instance="py"] move absolute position 920 0
-for_window [instance="py"] resize set 1440 500
+for_window [instance="py"] resize set 1400 500
 for_window [instance="py"] move scratchpad 
 
 # Todoist Scratchpad
@@ -287,9 +288,11 @@ for_window [class="Todoist"] move scratchpad
 # notes using vim
 ## TODO
 for_window [instance="notes"] floating enable
-for_window [instance="notes"] resize 1600 1600 
+for_window [instance="notes"] move absolute position 620 80
+for_window [instance="notes"] resize set  2000 2000 
 for_window [instance="notes"] border pixel 5
 for_window [instance="notes"] move scratchpad
+
 ##############################################################################
 
 ##################################### Bar ####################################

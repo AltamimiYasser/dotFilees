@@ -3,3 +3,4 @@
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+[ -n "$BASH" ] && [ -f ~/.bashrc ] && . ~/.bashrc

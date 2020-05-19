@@ -12,7 +12,6 @@
     "percent": 0.5,
     "swallows": [
        {
-        "class": "^URxvt$",
         "instance": "^big\\-w2$"
        }
     ],
@@ -40,7 +39,6 @@
             "percent": 0.285714285714286,
             "swallows": [
                {
-                "class": "^URxvt$",
                 "instance": "^search\\-small$"
                }
             ],

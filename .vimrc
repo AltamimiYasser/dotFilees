@@ -1,11 +1,11 @@
 "
 ".vimrc first try
 "
-"
 
 syntax on
 
 set noerrorbells
+set hidden
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
@@ -13,14 +13,13 @@ set expandtab
 set number
 set smartcase
 set ignorecase
-set backup
 set undodir=/.vim/undodir
 set undofile
 set incsearch " searching shows results immediatlly
 set wrap
 set autowrite
 set linebreak
-set backupext=.bak 
+set nobackup
 set mouse=a " enable mouse
 set belloff=all " disable bell for vim and gvim
 set wildmode=longest,list,full
@@ -51,6 +50,10 @@ Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'ap/vim-css-color'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-fugitive'
+Plug 'Yggdroot/indentLine'
+Plug 'godlygeek/tabular'
 
 " check plug and install neccery pluging
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -60,6 +63,25 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#end()
+
+" indentation line uses color scheme
+let g:indentLine_setColors = 0
+
+" each indent line has a distinct character
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" guard for distributions lacking the 'persistent_undo' feature.
+if has('persistent_undo')
+    " define a path to store persistent undo files.
+    let target_path = expand('~/.vim/undodir/')    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call system('mkdir -p ' . target_path)
+    endif    " point Vim to the defined undo directory.
+    let &undodir = target_path    " finally, enable undo persistence.
+    set undofile
+endif
+
 
 " allow rg to search root files
 if executable('rg')
@@ -138,6 +160,9 @@ map <leader>vimrc :vsp new <CR>:edit $MYVIMRC<CR>
 " zz to put screen in the middle while in insert mode
 inoremap zz <C-o>zz
 
+" map leader+u to undotree
+nnoremap <leader>u :UndotreeShow<CR>
+
 " TODO: map arrows and up and down to move logical lines
 " map j and k to go up logical lines
 " nmap <Up> gk
@@ -149,7 +174,8 @@ inoremap zz <C-o>zz
 " nmap <Down> <C-O>gj
 " nmap j <C-O>gj
 
-
+" use this to use tabularize
+vnoremap <leader>t :Tab /
 
 " autoload .vimrc when saved
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
@@ -208,3 +234,5 @@ vnoremap <F13> <Esc><Esc>:SWT
 " enabling mark down for vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" fixe mouse issue using Alacritty Terminal

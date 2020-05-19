@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/yasser/dotFiles/i3'
+let g:netrw_dirhist_4='/home/yasser/dotFiles'
+let g:netrw_dirhist_3='/home/yasser/dotFiles/dunst'
+let g:netrw_dirhist_2='/home/yasser/dotFiles/.oh-my-zsh/custom/themes/powerlevel10k'
 let g:netrw_dirhist_1='/home/yasser/dotFiles/polybar/battery-combined-udev'
 let g:netrw_dirhist_0='/home/yasser/dotFiles/polybar'
 let g:netrw_dirhist_9='/home/yasser/dotFiles/polybar/scripts'
 let g:netrw_dirhist_8='/home/yasser/dotFiles/polybar'
 let g:netrw_dirhist_7='/home/yasser/dotFiles/i3blocks'
 let g:netrw_dirhist_6='/home/yasser'
-let g:netrw_dirhist_5='/home/yasser/dotFiles/i3'
-let g:netrw_dirhist_4='/home/yasser/.config/gtk-3.0'
-let g:netrw_dirhist_3='/home/yasser/.config/i3'
-let g:netrw_dirhist_2='/usr/local/bin'

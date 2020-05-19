@@ -69,7 +69,7 @@ else
         icon="%{F${color_averge_good}} $battery_percent%{F-}"
     elif [ "$battery_percent" -gt 40 ]; then
         icon="%{F${color_averge}} $battery_percent%{F-}"
-    elif [ "$battery_percent" -gt 35 ]; then
+    elif [ "$battery_percent" -gt 20 ]; then
         icon="%{F${color_averge_bad}} $battery_percent%{F-}"
     elif [ "$battery_percent" -gt 10 ]; then
         icon="%{F${color_bad}} $battery_percent%{F-}"

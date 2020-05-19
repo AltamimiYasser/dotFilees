@@ -1,6 +1,4 @@
 #
-# ~/.bashrc
-#
 
 
 # If not running interactively, don't do anything
@@ -320,30 +318,40 @@ dbus-update-activation-environment --systemd --all
 # disable terminal only 
 
 # No ttyctl, so we need to save and then restore terminal settings
-vim()
-{
-   local STTYOPTS="$(stty --save)"
-   stty stop '' -ixoff
-   command vim "$@"
-   stty "$STTYOPTS"
-}
-
-ranger()
-{
-   local STTYOPTS="$(stty --save)"
-   stty stop '' -ixoff
-   command ranger "$@"
-   stty "$STTYOPTS"
-}
-
-# use sudovim to write in sudoedit
-sudovim()
-{
+ vim()
+ {
     local STTYOPTS="$(stty --save)"
     stty stop '' -ixoff
-    command sudoedit "$@"
+    command vim "$@"
     stty "$STTYOPTS"
-}
+ }
+
+# nvim
+ nvim()
+ {
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command nvim "$@"
+    stty "$STTYOPTS"
+ }
+
+# 
+ ranger()
+ {
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command ranger "$@"
+    stty "$STTYOPTS"
+ }
+# 
+ # use sudovim to write in sudoedit
+ sudovim()
+ {
+     local STTYOPTS="$(stty --save)"
+     stty stop '' -ixoff
+     command sudoedit "$@"
+     stty "$STTYOPTS"
+ }
 
 # allow sudo to use this profile
 alias sudo='sudo '
@@ -386,3 +394,4 @@ alias v="vim"
 alias sv="sudovim"
 alias calc="expr"
 alias ls="ls -la"
+

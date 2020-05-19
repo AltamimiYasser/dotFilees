@@ -32,7 +32,6 @@
             "percent": 0.25,
             "swallows": [
                 {
-                    "class": "^URxvt$",
                     "instance": "^nautilus$"
                 }
             ],
