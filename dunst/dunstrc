@@ -64,7 +64,7 @@
     frame_width = 1
 
     # Defines color of the frame around the notification window.
-    frame_color = "#455244"
+    frame_color = "#2f343f"
 
     # Define a color for the separator.
     # possible values are:
@@ -163,7 +163,7 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 0
+    max_icon_size = 512
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Flat-Remix-Blue-Dark/status/symbolic/:/usr/share/icons/Flat-Remix-Blue-Dark/devices/symbolic
@@ -197,8 +197,7 @@
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = false
-
+    startup_notification = true
     # Manage dunst's desire for talking
     # Can be one of the following values:
     #  crit: Critical features. Dunst aborts
@@ -213,7 +212,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 0.5
 
     ### Legacy
 
@@ -275,8 +274,8 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282828"
-    foreground = "#ebdbb2"
+    background = "#2f343f"
+    foreground = "#f3f4f5"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon

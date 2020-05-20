@@ -73,9 +73,9 @@ new_window 1pixel
 
 set $mod Mod4
 
-# Use pulseaudio to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
+# Use amixer to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/yasser/.config/dunst/sound-control.sh -inc
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/yasser/.config/dunst/sound-control.sh -dec 
 bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 
 # lock the screen
@@ -83,9 +83,7 @@ bindsym $mod+Shift+x exec lock-screen.sh
 # brightness controls
 
 bindsym XF86MonBrightnessUp exec /home/yasser/.config/dunst/brightness-indicator.sh -inc
-#bindsym XF86MonBrightnessUp exec brightnessControl.sh up
 bindsym XF86MonBrightnessDown exec /home/yasser/.config/dunst/brightness-indicator.sh -dec
-#bindsym XF86MonBrightnessDown exec brightnessControl.sh down
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -236,14 +234,13 @@ exec_always volnoti
 exec_always dbus-launch picom -b &
 
 # wall paper
-exec_always feh --bg-scale /home/yasser/Pictures/wallpapers/7527959832_fbb4d21ff9_o.jpg
-
+exec_always feh --bg-scale --randomize ~/Dropbox/MyDropbox/wallpapers/archlinux
 # dropbox
 exec dropbox start
 
 # open work space 2 with firefox and two terminals
 set $arch-wiki "firefox --new-window https://wiki.archlinux.org"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/yasser/.config/i3/workspace-2.json; exec firefox --new-window http://www.google.com; exec alacritty --class search-small ; exec alacritty --class big-w2 '"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/yasser/.config/i3/workspace-2.json; exec firefox --new-window http://www.google.com; exec alacritty --class big-w2 '"
 ##
 ## open work space 3 with a 2 terminals
 exec --no-startup-id " sleep 1; i3-msg 'workspace 3; append_layout /home/yasser/.config/i3/workspace-3.json; exec alacritty --class coding'"
