@@ -81,8 +81,11 @@ bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixe
 # lock the screen
 bindsym $mod+Shift+x exec lock-screen.sh 
 # brightness controls
-bindsym XF86MonBrightnessUp exec brightnessControl.sh up
-bindsym XF86MonBrightnessDown exec brightnessControl.sh down
+
+bindsym XF86MonBrightnessUp exec /home/yasser/.config/dunst/brightness-indicator.sh -inc
+#bindsym XF86MonBrightnessUp exec brightnessControl.sh up
+bindsym XF86MonBrightnessDown exec /home/yasser/.config/dunst/brightness-indicator.sh -dec
+#bindsym XF86MonBrightnessDown exec brightnessControl.sh down
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -224,8 +227,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- lock-screen.sh --nofork
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
-# notification dunst
-exec_always dunst
+# start xfce4 notification center
 
 # volume control
 exec_always volnoti
@@ -286,13 +288,22 @@ for_window [class="Todoist"] floating enable
 for_window [class="Todoist"] move scratchpad
 
 # notes using vim
-## TODO
 for_window [instance="notes"] floating enable
 for_window [instance="notes"] move absolute position 620 80
 for_window [instance="notes"] resize set  2000 2000 
 for_window [instance="notes"] border pixel 5
 for_window [instance="notes"] move scratchpad
 
+# image viwer
+for_window [class="Eog"] floating enable
+for_window [class="Eog"] move absolute position 620 80
+for_window [class="Eog"] resize set 2000 2000
+
+# gimp
+for_window [class="Gimp-2.10"] floating enable
+for_window [class="Gimp-2.10"] move absolute position 0 0
+for_window [class="Gimp-2.10"] resize set 3240 2160
+assign [class="Gimp-2.10"] $ws6
 ##############################################################################
 
 ##################################### Bar ####################################
