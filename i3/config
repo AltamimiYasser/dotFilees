@@ -18,7 +18,7 @@ mode "$mode_power" {
         bindsym l exec i3-msg exit
         bindsym s exec systemctl poweroff
         bindsym r exec reboot
-        bindsym d exec suspend
+        bindsym d exec systemctl suspend
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -111,8 +111,12 @@ bindsym Mod1+t exec todoist &
 bindsym Mod1+2 [class="Todoist"] scratchpad show
 
 # vimwiki
-bindsym Mod1+n exec alacritty --class notes -e bash -i -c "vim /home/yasser/vimwiki/index.md"
+bindsym Mod1+n exec alacritty --class notes -e bash -i -c "nvim /home/yasser/vimwiki/index.md"
 bindsym Mod1+3 [instance="notes"] scratchpad show
+
+# Programming notes
+bindsym Mod1+g exec alacritty --class programming -e bash -i -c "nvim /home/yasser/Dropbox/MyDropbox/Programing/cs50/programming.md"
+bindsym Mod1+5 [instance="programming"] scratchpad show
 
 # rofi
 bindsym $mod+d exec rofi -show drun
@@ -257,7 +261,8 @@ set $google "/usr/bin/firefox --new-window http://www.google.com/"
 exec --no-startup-id "sleep 7; i3-msg 'workspace 1; append_layout /home/yasser/.config/i3/workspace-1.json; exec firefox --new-window https://www.youtube.com/'"
 
 # start scratchpad apps
-exec --no-startup-id exec alacritty --class notes -e bash -i -c "vim /home/yasser/vimwiki/index.md"
+exec --no-startup-id exec alacritty --class notes -e bash -i -c "nvim /home/yasser/vimwiki/index.md"
+exec --no-startup-id exec alacritty --class programming -e bash -i -c "nvim /home/yasser/Dropbox/MyDropbox/Programing/cs50/programming.md"
 exec --no-startup-id todoist &
 exec --no-startup-id alacritty --class scratchterm &
 exec --no-startup-id alacritty --class py -e python&
@@ -290,6 +295,13 @@ for_window [instance="notes"] move absolute position 620 80
 for_window [instance="notes"] resize set  2000 2000 
 for_window [instance="notes"] border pixel 5
 for_window [instance="notes"] move scratchpad
+
+# programming notes 
+for_window [instance="programming"] floating enable
+for_window [instance="programming"] move absolute position 620 80
+for_window [instance="programming"] resize set 2000 2000
+for_window [instance="programming"] border pixel 5
+for_window [instance="programming"] move scratchpad
 
 # image viwer
 for_window [class="Eog"] floating enable

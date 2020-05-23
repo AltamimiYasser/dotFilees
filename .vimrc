@@ -20,12 +20,19 @@ set wrap
 set autowrite
 set linebreak
 set nobackup
-set mouse=a " enable mouse
+set mouse=nv " enable mouse only in normal and visual mode
 set belloff=all " disable bell for vim and gvim
 set wildmode=longest,list,full
 set wildmenu
 set ruler " show curser position all the time
 set whichwrap+=<,>,[,]
+set spelllang=en_us
+set backspace=indent,eol,start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
 
 " this for vimwiki
 set nocompatible
@@ -54,6 +61,9 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'godlygeek/tabular'
+Plug 'WolfgangMehner/c-support'
+Plug 'vim-syntastic/syntastic'
+Plug 'kien/ctrlp.vim'
 
 " check plug and install neccery pluging
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -81,6 +91,15 @@ if has('persistent_undo')
     let &undodir = target_path    " finally, enable undo persistence.
     set undofile
 endif
+
+" setting for syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_c_checkers = ['clang_tidy', 'gcc', 'make']
+" clang_check clang_tidy gcc make
+"let g:syntastic_<filetype>_checkers = ['<checker-name>']
 
 
 " allow rg to search root files
@@ -113,7 +132,9 @@ inoremap <C-n>h <Esc><Esc>:sp h<CR>:edit
 " copy and paste
 vnoremap <C-c> "+y
 noremap <C-p> "+p
-inoremap <C-p> <Esc><Esc>"+pi
+inoremap <C-p> <Esc><Esc>"+pa
+
+" change the ctrlP plugint shortcut
 
 " undo and redo
 inoremap <C-z> <C-o>u
@@ -128,17 +149,12 @@ inoremap <C-s> <Esc><Esc>:update<CR>
 nnoremap <C-t> :tabnew<CR>
 
 " to move between tabs ctrl+arrow (left and right)
-" ctrl+Right
-set <F14>=Oc
-
-"ctrl+Left
-set <F15>=Od
 
 " and now map them
-nnoremap <F14> :tabnext<CR>
-inoremap <F14> <Esc><Esc>:tabnext<CR>
-nnoremap <F15> :tabprev<CR>
-inoremap <F15> <Esc><Esc>:tabprev
+nnoremap <C-Right> :tabnext<CR>
+inoremap <C-Right> <Esc><Esc>:tabnext<CR>
+nnoremap <C-Left> :tabprev<CR>
+inoremap <C-Left> <Esc><Esc>:tabprev<CR>
 
 
 " use leader plus hjkl to move between open windows
@@ -151,8 +167,8 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>b :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
 " formating with F7
-nnoremap <F7> gg=G<C-o><C-o>
-inoremap <F7> <Esc><Esc>gg=G<C-o><C-o>i
+nnoremap <F7> gg=G
+inoremap <F7> <Esc><Esc>gg=G'.i
 
 " leader+vimrc open vimrc file from anyfile
 map <leader>vimrc :vsp new <CR>:edit $MYVIMRC<CR>
@@ -233,6 +249,14 @@ vnoremap <F13> <Esc><Esc>:SWT
 
 " enabling mark down for vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+            \ 'syntax': 'markdown', 'ext': '.md'}]
 
-" fixe mouse issue using Alacritty Terminal
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <M-[> <Esc>
+    tnoremap <C-v><Esc> <Esc>
+    nnoremap <leader>p :CtrlP<CR>
+endif
+
+" map f6 to spell check
+map <F6> :setlocal spell! spelllang=en_us<CR>

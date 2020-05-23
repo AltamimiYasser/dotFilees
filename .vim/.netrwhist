@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/usr/lib/systemd/system-sleep'
 let g:netrw_dirhist_5='/home/yasser/dotFiles/i3'
 let g:netrw_dirhist_4='/home/yasser/dotFiles'
 let g:netrw_dirhist_3='/home/yasser/dotFiles/dunst'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_0='/home/yasser/dotFiles/polybar'
 let g:netrw_dirhist_9='/home/yasser/dotFiles/polybar/scripts'
 let g:netrw_dirhist_8='/home/yasser/dotFiles/polybar'
 let g:netrw_dirhist_7='/home/yasser/dotFiles/i3blocks'
-let g:netrw_dirhist_6='/home/yasser'
