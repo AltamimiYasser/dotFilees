@@ -1,0 +1,21 @@
+#
+#
+# custom aliases
+alias v="nvim"
+alias sv="sudovim"
+alias calc="expr"
+alias vimrc="nvim /home/yasser/.vimrc"
+alias zshrc="nvim /home/yasser/.zshrc"
+alias i3conf="nvim /home/yasser/.config/i3/config"
+alias la="exa -a"
+alias ll="exa -l"
+alias ls="exa -aG"
+alias ..="cd .."
+alias grep="grep --color=auto"
+alias bashrc="nvim /home/yasser/.bashrc"
+alias zsettings="nvim /home/yasser/.oh-my-zsh/custom/settings.zsh"
+alias zaliases="nvim /home/yasser/.oh-my-zsh/custom/aliases.zsh"
+alias zfunctions="nvim /home/yasser/.oh-my-zsh/custom/functions.zsh"
+alias .="source /home/yasser/.zshrc"
+alias note-send="/home/yasser/notify-send.py/notify_send_py/notify_send_py.py"
+alias polyconfig="nvim /home/yasser/.config/polybar/config"
